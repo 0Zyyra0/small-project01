@@ -1,0 +1,142 @@
+/* فونت مناسب: Vazirmatn برای متن‌های پارسی */
+body {
+    font-family: 'Vazirmatn', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+}
+
+.nav-menu li {
+    margin-left: 1.5rem;
+}
+
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+    font-size: 0.95rem;
+}
+
+.nav-menu a:hover {
+    color: #ffd700;
+}
+
+.section {
+    padding: 40px 0; /* کاهش padding برای بخش‌های بیشتر */
+    min-height: auto; /* تغییر برای one-page طولانی‌تر */
+}
+
+.bg-light {
+    background-color: #fff;
+}
+
+h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #4a4a4a;
+}
+
+h2 {
+    font-size: 2rem;
+    color: #667eea;
+    margin-top: 2rem;
+    text-align: right;
+}
+
+h3 {
+    font-size: 1.5rem;
+    color: #764ba2;
+    margin-top: 1.5rem;
+}
+
+p {
+    font-size: 1.1rem;
+    text-align: justify;
+    margin-bottom: 1rem;
+}
+
+ul, ol {
+    padding-right: 2rem;
+}
+
+ul li, ol li {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.subtitle {
+    font-style: italic;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+}
+
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* ریسپانسیو */
+@media (max-width: 768px) {
+    .nav-menu {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .nav-menu li {
+        margin: 0.5rem 0;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .container {
+        padding: 10px;
+    }
+    
+    .nav-menu a {
+        font-size: 1rem;
+    }
+}
