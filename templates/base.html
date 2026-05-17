@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore the incredible career of Lewis Hamilton, a Formula 1 legend. Featuring his records, achievements, and journey.">
+    <title>Lewis Hamilton | Formula 1 Legend</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="#hero">Lewis Hamilton </a>
+
+            <nav class="site-nav">
+                <a href="#hero" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About Lewis</a>
+                <a href="#records" class="nav-link">Records</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>© {% now "Y" %} Lewis Hamilton Chronicle. All rights reserved.</p>
+            <p>Dedicated to the legacy of a Formula 1 icon</p>
+        </div>
+    </footer>
+
+    <script src="{% static 'script.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

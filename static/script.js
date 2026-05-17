@@ -1,56 +1,62 @@
-// اسکریپت ساده برای smooth scroll و انیمیشن fade-in بخش‌ها
-document.addEventListener('DOMContentLoaded', function() {
-    // Smooth scroll برای لینک‌های نویگیشن
-    const links = document.querySelectorAll('.nav-menu a');
-    links.forEach(link => {
-        link.addEventListener('click', function(e) {
+document.addEventListener("DOMContentLoaded", () => {
+    const header = document.querySelector(".site-header");
+    const navLinks = document.querySelectorAll(".nav-link");
+    const sections = document.querySelectorAll("section[id]");
+
+    const headerOffset = () => (header ? header.offsetHeight + 14 : 0);
+
+    function setActiveLink() {
+        const scrollPos = window.scrollY + headerOffset() + 20;
+
+        let current = "hero";
+        sections.forEach((section) => {
+            if (scrollPos >= section.offsetTop) {
+                current = section.id;
+            }
+        });
+
+        navLinks.forEach((link) => {
+            link.classList.toggle("active", link.getAttribute("href") === `#${current}`);
+        });
+    }
+
+    navLinks.forEach((link) => {
+        link.addEventListener("click", (e) => {
+            const href = link.getAttribute("href");
+            if (!href || !href.startsWith("#")) return;
+
             e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            if (targetSection) {
-                targetSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
+            const target = document.querySelector(href);
+            if (!target) return;
+
+            const top = target.getBoundingClientRect().top + window.scrollY - headerOffset();
+            window.scrollTo({
+                top,
+                behavior: "smooth"
+            });
         });
     });
 
-    // انیمیشن fade-in هنگام اسکرول (برای جذابیت سایت موسیقی)
-    const sections = document.querySelectorAll('.section');
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add("visible");
         });
-    }, observerOptions);
-
-    sections.forEach(section => {
-        section.style.opacity = '0';
-        section.style.transform = 'translateY(20px)';
-        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(section);
+    }, {
+        threshold: 0.18
     });
 
-    // افکت موسیقی: تغییر رنگ هدر هنگام اسکرول
-    window.addEventListener('scroll', function() {
-        const header = document.querySelector('header');
-        if (window.scrollY > 100) {
-            header.style.background = 'linear-gradient(135deg, #4a5568 0%, #2d3748 100%)';
-        } else {
-            header.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
-        }
-    });
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 
-    // بهبود برای نویگیشن طولانی: کوچک کردن فونت در موبایل
-    if (window.innerWidth <= 768) {
-        document.querySelector('.nav-menu').style.fontSize = '0.9rem';
+    window.addEventListener("scroll", setActiveLink, { passive: true });
+    window.addEventListener("resize", setActiveLink);
+    setActiveLink();
+
+    const form = document.querySelector("#contact form");
+    if (form) {
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            alert("Thank you for your message! This is a fan tribute site."); // English alert
+            form.reset();
+        });
     }
 });
