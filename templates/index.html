@@ -1,95 +1,93 @@
-{% extends "base.html" %}
-{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رزومه | علی مرادی</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
 
-{% block title %}Lewis Hamilton | F1 Champion{% endblock %}
-{% block description %}A tribute to the career of Lewis Hamilton, detailing his record-breaking achievements in Formula 1.{% endblock %}
-
-{% block content %}
-<section id="hero" class="section">
-    <div class="container grid-2">
-        <div class="reveal visible">
-            <h1 class="section-title" style="font-size: clamp(2.8rem, 6vw, 4.8rem); margin-bottom: 20px;">
-                The Unstoppable Force: Lewis Hamilton
-            </h1>
-            <p class="section-subtitle" style="font-size: 1.15rem; max-width: 650px;">
-                Discover the extraordinary journey of Sir Lewis Hamilton, a seven-time Formula 1 World Champion,
-                holding numerous records and inspiring millions worldwide with his talent and advocacy.
-            </p>
-            <a href="#contact" class="cta-button">Get in Touch</a>
-        </div>
-
-        <div class="card feature-box reveal">
-            <h2 class="section-title" style="font-size: 2rem; margin-bottom: 14px;">Key Career Highlights</h2>
-            <ul class="feature-list">
-                <li>Joint-record Seven Formula 1 World Drivers' Championships</li>
-                <li>Record Holder for Most Career Wins (105) and Pole Positions (104)</li>
-                <li>Most Podium Finishes in F1 History (203)</li>
-                <li>Pioneering figure as the first Black F1 World Champion</li>
+<header>
+    <nav class="navbar">
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li><a href="#bio">بیوگرافی و تماس</a></li>
+                <li><a href="#education">تحصیلات</a></li>
+                <li><a href="#skills">توانایی‌ها</a></li>
+                <li><a href="#languages">زبان‌ها</a></li>
+                <li><a href="#projects">پروژه‌ها</a></li>
             </ul>
         </div>
-    </div>
-</section>
+    </nav>
+</header>
 
-<section id="about" class="section">
-    <div class="container grid-2">
-        <div class="reveal">
-            <h2 class="section-title">About Lewis Hamilton</h2>
-            <p class="section-subtitle">
-                Born on January 7, 1985, in Stevenage, England, Lewis Hamilton began his motorsport journey at a young age.
-                His innate talent quickly propelled him through the ranks, leading to his highly anticipated Formula 1 debut in 2007.
-            </p>
-        </div>
-        <div class="card feature-box reveal">
-            <p class="text-muted">
-                Hamilton's career is marked by incredible determination, skill, and a commitment to pushing boundaries,
-                both on and off the track. He continues to be a formidable competitor and a powerful voice for social change.
-            </p>
-        </div>
-    </div>
-</section>
+<main>
 
-<section id="records" class="section">
+    <section id="bio" class="section">
+        <div class="container">
+            <h1>علی مرادی</h1>
+            <p class="subtitle">دانش‌آموز رشته ریاضی فیزیک</p>
+            <p>دانش‌آموز پایه دوازدهم رشته ریاضی فیزیک هستم و به دنیای برنامه‌نویسی و طراحی علاقه‌مندم. در کنار درس، به یادگیری پایتون و جنگو مشغولم و از ابزارهای طراحی مثل فتوشاپ هم برای کارهای گرافیکی استفاده می‌کنم. هدفم ادامه‌ی مسیر تحصیلی در حوزه‌ی مرتبط با علوم کامپیوتر و توسعه‌ی مهارت‌های فنی‌مه.</p>
+            <ul class="contact-list">
+                <li>📧 alimoradi@gmail.com</li>
+                <li>📍 تهران، استان تهران</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="education" class="section bg-light">
+        <div class="container">
+            <h2>🎓 تحصیلات</h2>
+            <div class="item">
+                <h3>پایه دوازدهم - رشته ریاضی فیزیک</h3>
+                <p class="meta">در حال تحصیل</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section">
+        <div class="container">
+            <h2>🛠 توانایی‌ها</h2>
+            <ul class="skill-list">
+                <li>پایتون (Python)</li>
+                <li>جنگو (Django)</li>
+                <li>فتوشاپ (Photoshop)</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="languages" class="section bg-light">
+        <div class="container">
+            <h2>🌐 زبان‌ها</h2>
+            <ul class="lang-list">
+                <li>فارسی — زبان مادری</li>
+                <li>انگلیسی — سطح B1</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <div class="container">
+            <h2>💼 پروژه‌ها</h2>
+            <div class="item">
+                <h3>[نام پروژه]</h3>
+                <p>[توضیح کوتاه درباره پروژه و تکنولوژی‌های استفاده‌شده]</p>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
     <div class="container">
-        <h2 class="section-title reveal">Dominance and Records</h2>
-        <p class="section-subtitle reveal">
-            A look at some of the unparalleled records set by Lewis Hamilton throughout his illustrious career.
-        </p>
-
-        <div class="grid-2" style="grid-template-columns: repeat(3, 1fr); align-items: stretch;">
-            <div class="card feature-box reveal">
-                <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; margin-bottom: 12px; color: var(--dark);">Championships</h3>
-                <p class="text-muted">Tied with Michael Schumacher for 7 World Drivers' Championships.</p>
-            </div>
-            <div class="card feature-box reveal">
-                <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; margin-bottom: 12px; color: var(--dark);">Race Wins</h3>
-                <p class="text-muted">All-time record holder with 105 Grand Prix victories.</p>
-            </div>
-            <div class="card feature-box reveal">
-                <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; margin-bottom: 12px; color: var(--dark);">Pole Positions</h3>
-                <p class="text-muted">Holds the record for the most pole positions with 104.</p>
-            </div>
-        </div>
+        <p>&copy; 2026 علی مرادی</p>
     </div>
-</section>
+</footer>
 
-<section id="contact" class="section">
-    <div class="container grid-2">
-        <div class="reveal">
-            <h2 class="section-title">Connect</h2>
-            <p class="section-subtitle">
-                This site is a fan tribute. For official information or inquiries, please refer to official Formula 1 sources.
-            </p>
-        </div>
-
-        <div class="card feature-box reveal">
-            <form method="post" action="">
-                {% csrf_token %}
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="email" placeholder="Your Email" required>
-                <textarea name="message" placeholder="Your Message (Fan Tribute)" required></textarea>
-                <button type="submit" class="cta-button">Send Message</button>
-            </form>
-        </div>
-    </div>
-</section>
-{% endblock %}
+<script src="static/script.js"></script>
+</body>
+</html>
