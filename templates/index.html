@@ -1,93 +1,76 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>رزومه | علی مرادی</title>
-    <link rel="stylesheet" href="static/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap" rel="stylesheet">
-</head>
-<body>
+{% extends 'base.html' %}
 
-<header>
-    <nav class="navbar">
-        <div class="nav-container">
-            <ul class="nav-menu">
-                <li><a href="#bio">بیوگرافی و تماس</a></li>
-                <li><a href="#education">تحصیلات</a></li>
-                <li><a href="#skills">توانایی‌ها</a></li>
-                <li><a href="#languages">زبان‌ها</a></li>
-                <li><a href="#projects">پروژه‌ها</a></li>
-            </ul>
+{% block title %}رزومه | {{ full_name }}{% endblock %}
+
+{% block content %}
+
+<section id="bio" class="hero">
+    <div class="container hero-inner">
+        <div class="avatar">{{ full_name|first }}</div>
+        <h1>{{ full_name }}</h1>
+        <p class="subtitle">{{ job_title }}</p>
+        <p class="bio-text">{{ bio }}</p>
+        <div class="contact-pills">
+            <span class="pill">📧 {{ email }}</span>
+            <span class="pill">📍 {{ city }}</span>
         </div>
-    </nav>
-</header>
-
-<main>
-
-    <section id="bio" class="section">
-        <div class="container">
-            <h1>علی مرادی</h1>
-            <p class="subtitle">دانش‌آموز رشته ریاضی فیزیک</p>
-            <p>دانش‌آموز پایه دوازدهم رشته ریاضی فیزیک هستم و به دنیای برنامه‌نویسی و طراحی علاقه‌مندم. در کنار درس، به یادگیری پایتون و جنگو مشغولم و از ابزارهای طراحی مثل فتوشاپ هم برای کارهای گرافیکی استفاده می‌کنم. هدفم ادامه‌ی مسیر تحصیلی در حوزه‌ی مرتبط با علوم کامپیوتر و توسعه‌ی مهارت‌های فنی‌مه.</p>
-            <ul class="contact-list">
-                <li>📧 alimoradi@gmail.com</li>
-                <li>📍 تهران، استان تهران</li>
-            </ul>
-        </div>
-    </section>
-
-    <section id="education" class="section bg-light">
-        <div class="container">
-            <h2>🎓 تحصیلات</h2>
-            <div class="item">
-                <h3>پایه دوازدهم - رشته ریاضی فیزیک</h3>
-                <p class="meta">در حال تحصیل</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="skills" class="section">
-        <div class="container">
-            <h2>🛠 توانایی‌ها</h2>
-            <ul class="skill-list">
-                <li>پایتون (Python)</li>
-                <li>جنگو (Django)</li>
-                <li>فتوشاپ (Photoshop)</li>
-            </ul>
-        </div>
-    </section>
-
-    <section id="languages" class="section bg-light">
-        <div class="container">
-            <h2>🌐 زبان‌ها</h2>
-            <ul class="lang-list">
-                <li>فارسی — زبان مادری</li>
-                <li>انگلیسی — سطح B1</li>
-            </ul>
-        </div>
-    </section>
-
-    <section id="projects" class="section">
-        <div class="container">
-            <h2>💼 پروژه‌ها</h2>
-            <div class="item">
-                <h3>[نام پروژه]</h3>
-                <p>[توضیح کوتاه درباره پروژه و تکنولوژی‌های استفاده‌شده]</p>
-            </div>
-        </div>
-    </section>
-
-</main>
-
-<footer>
-    <div class="container">
-        <p>&copy; 2026 علی مرادی</p>
     </div>
-</footer>
+</section>
 
-<script src="static/script.js"></script>
-</body>
-</html>
+<section id="education" class="section">
+    <div class="container">
+        <h2><span class="icon">🎓</span> تحصیلات</h2>
+        <div class="timeline">
+            {% for edu in education %}
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>{{ edu.title }}</h3>
+                    <p class="meta">{{ edu.status }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section id="skills" class="section bg-light">
+    <div class="container">
+        <h2><span class="icon">🛠</span> توانایی‌ها</h2>
+        <div class="skill-grid">
+            {% for skill in skills %}
+            <div class="skill-chip">{{ skill }}</div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section id="languages" class="section">
+    <div class="container">
+        <h2><span class="icon">🌐</span> زبان‌ها</h2>
+        <div class="lang-grid">
+            {% for lang in languages %}
+            <div class="lang-card">
+                <span class="lang-name">{{ lang.name }}</span>
+                <span class="lang-level">{{ lang.level }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section id="projects" class="section bg-light">
+    <div class="container">
+        <h2><span class="icon">💼</span> پروژه‌ها</h2>
+        <div class="project-grid">
+            {% for project in projects %}
+            <div class="project-card">
+                <h3>{{ project.title }}</h3>
+                <p>{{ project.description }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}
