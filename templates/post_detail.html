@@ -1,55 +1,51 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>شروع کار با جنگو</title>
-    <link rel="stylesheet" href="static/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-</head>
-<body>
+{% extends 'base.html' %}
 
-<header>
-    <nav class="navbar">
-        <div class="nav-container">
-            <span class="logo">علی مرادی</span>
-            <ul class="nav-menu">
-                <li><a href="index.html">خانه</a></li>
-                <li><a href="post_list.html" class="active">پست‌ها</a></li>
-            </ul>
-        </div>
-    </nav>
-</header>
+{% block title %}{{ post.title }}{% endblock %}
 
-<main>
-    <section class="post-hero">
-        <div class="container">
-            <a href="post_list.html" class="back-link">→ بازگشت به لیست پست‌ها</a>
-            <span class="post-tag">آموزشی</span>
-            <h1 class="post-detail-title">شروع کار با جنگو</h1>
-            <p class="meta">📅 تاریخ انتشار: ۱۴۰۴/۰۵/۱۲ &nbsp;·&nbsp; 👁 ۱۲۴ بازدید</p>
-        </div>
-    </section>
+{% block content %}
 
-    <section class="section">
-        <div class="container post-detail-container">
-            <div class="post-content">
-                <p>جنگو یک فریم‌ورک وب متن‌باز و قدرتمند نوشته‌شده با زبان پایتون است که به توسعه‌دهندگان امکان می‌دهد به سرعت وب‌سایت‌های امن و مقیاس‌پذیر بسازند.</p>
-                <p>برای شروع، ابتدا باید پایتون و جنگو را نصب کرده و با دستور <code>django-admin startproject</code> یک پروژه‌ی جدید ایجاد کنید. سپس با دستور <code>startapp</code> اپلیکیشن‌های مورد نیاز پروژه را می‌سازید.</p>
-                <p>ساختار MVT (Model-View-Template) در جنگو به شما کمک می‌کند منطق برنامه، داده‌ها و نمایش را به‌صورت جدا از هم مدیریت کنید که همین موضوع نگهداری و توسعه‌ی پروژه را بسیار ساده‌تر می‌کند.</p>
-            </div>
-        </div>
-    </section>
-</main>
-
-<footer>
+<section class="post-hero">
     <div class="container">
-        <p>&copy; 2026 علی مرادی — ساخته‌شده با ❤️</p>
+        <a href="{% url 'website:post_list' %}" class="back-link">→ بازگشت به لیست پست‌ها</a>
+        <h1 class="post-detail-title">{{ post.title }}</h1>
+        <p class="meta">
+            📅 تاریخ انتشار: {{ post.published_date|date:"Y/m/d" }}
+            &nbsp;·&nbsp;
+            👁 {{ post.counted_view }} بازدید
+        </p>
     </div>
-</footer>
+</section>
 
-<script src="static/script.js"></script>
-</body>
-</html>
+<section class="section">
+    <div class="container post-detail-container">
+        <div class="post-content">
+            {{ post.content|linebreaks }}
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="post-navigation">
+            {% if previous_post %}
+                <a href="{% url 'website:post_detail' previous_post.pk %}" class="post-nav-link prev-post">
+                    <span class="nav-label">← پست قبلی</span>
+                    <span class="nav-title">{{ previous_post.title }}</span>
+                </a>
+            {% else %}
+                <span class="post-nav-link disabled">پست قبلی وجود ندارد</span>
+            {% endif %}
+
+            {% if next_post %}
+                <a href="{% url 'website:post_detail' next_post.pk %}" class="post-nav-link next-post">
+                    <span class="nav-label">پست بعدی →</span>
+                    <span class="nav-title">{{ next_post.title }}</span>
+                </a>
+            {% else %}
+                <span class="post-nav-link disabled">پست بعدی وجود ندارد</span>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}

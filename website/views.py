@@ -35,4 +35,20 @@ def post_detail_view(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.counted_view += 1
     post.save()
+
+    posts = list(Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date'))
+    current_index = posts.index(post)
+
+    previous_post = posts[current_index - 1] if current_index > 0 else None
+    next_post = posts[current_index + 1] if current_index < len(posts) - 1 else None
+
+    context = {
+        'post': post,
+        'previous_post': previous_post,
+        'next_post': next_post,
+    }
+    return render(request, 'post_detail.html', context)
+    post = get_object_or_404(Post, pk=pk)
+    post.counted_view += 1
+    post.save()
     return render(request, 'post_detail.html', {'post': post})
