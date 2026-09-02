@@ -27,7 +27,7 @@ def index_view(request):
 
 
 def post_list_view(request):
-    posts = Post.objects.filter(published_date__lte=timezone.now())
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
     return render(request, 'post_list.html', {'posts': posts})
 
 
